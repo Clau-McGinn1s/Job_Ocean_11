@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-image{
+    background-image: url('../images/water.png');
+    background-color: space;
+}
+.text-2xs{
+    font-size: .625rem ;
+    line-height: 1rem;
+}
