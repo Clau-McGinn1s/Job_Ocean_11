@@ -2,18 +2,16 @@
 
 namespace App\View\Components;
 
-use App\Models\Tag as ModelsTag;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Tag extends Component
+class form.error extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public ?string $href = '#',
-        public ?ModelsTag $tag = null )
+    public function __construct()
     {
         //
     }
@@ -23,6 +21,6 @@ class Tag extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.tag');
+        return view('components.form.error');
     }
 }

@@ -10,3 +10,7 @@
     font-size: .625rem ;
     line-height: 1rem;
 }
+
+.btn{
+    @apply p-1 px-16 bg-cerulean/50 rounded-lg hover:bg-sky/60 border border-cerulean/80 hover:text-sky inline-block;
+}

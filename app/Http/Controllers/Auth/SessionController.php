@@ -1,27 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use App\Models\Job;
-use App\Models\Tag;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class SessionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $jobs = Job::with('employer')->latest()->get();
-        $featured_jobs = Job::with('employer')->where('featured', true)->latest()->get();
-        $tags = Tag::latest()->get(); 
-
-        return view('jobs.index',[
-            'featured_jobs' => $featured_jobs,
-            'jobs' => $jobs,
-            'tags' => $tags
-        ]);
+        //
     }
 
     /**
@@ -29,7 +20,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return view('auth.login');
     }
 
     /**
@@ -37,13 +28,13 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('jobs.index')->with('ok', 'Welcome back!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Job $job)
+    public function show(string $id)
     {
         //
     }
@@ -51,7 +42,7 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Job $job)
+    public function edit(string $id)
     {
         //
     }
@@ -59,7 +50,7 @@ class JobController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Job $job)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -67,7 +58,7 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Job $job)
+    public function destroy(string $id)
     {
         //
     }

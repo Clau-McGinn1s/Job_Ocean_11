@@ -1,3 +1,4 @@
+@props(['job'])
 <x-card class="flex space-x-4">
     <div class="shrink">
         <x-employer-logo/>
@@ -5,20 +6,20 @@
     <div class="grow flex flex-col">
         <div class="flex flex-row justify-between">
             <div>
-                <a class="text-sm hover:underline" href="#">The Company</a>
+                <a class="text-sm hover:underline" href="#">{{$job->employer->name}}</a>
             </div>
             <div class="flex text-sm space-x-1">
-                <x-tag>Remote</x-tag>
-                <x-tag>10h</x-tag>
+                <x-tag>{{$job->location}}</x-tag>
+                <x-tag>{{$job->created_at->diffForHumans()}}</x-tag>
             </div>
         </div>
-        <x-card-title class="text-xl mt-2 font-semibold">The Job Title</x-card-title>
+        <x-card-title class="text-xl mt-2 font-semibold">{{$job->title}}</x-card-title>
         <div class="flex justify-between mt-10 text-sm">
-            <p>Full Time - From $60,000</p>
+            <p>{{$job->shift_type}} - From {{$job->salary}}</p>
             <div class="flex space-x-1 font-semibold">
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
-                <x-tag>Tag</x-tag>
+                @foreach ($job->tags as $tag)
+                    <x-tag :$tag >{{$tag->name}}</x-tag>
+                @endforeach
             </div>
         </div>
     </div>

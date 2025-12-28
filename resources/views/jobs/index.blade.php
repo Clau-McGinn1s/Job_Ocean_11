@@ -12,18 +12,22 @@
             <x-section-heading>Top Jobs</x-section-heading>
 
             <div class="grid lg:grid-cols-3 mt-5 gap-6">
-                @for ($i = 0; $i < 3; $i++)
-                    <x-job-card.standard/>
-                @endfor
+               @foreach ($featured_jobs as $job)
+                <x-job-card.standard :$job />
+               @endforeach
             </div>
             
         </section>
         <section>
             <x-section-heading>Tags</x-section-heading>
-            <div class="mt-6 space-x-2 text-lg font-semibold">
-                @for($i = 0; $i < 20; $i++)
-                    <x-tag>Tag {{$i}}</x-tag>
-                @endfor
+            <div class="mt-6 flex flex-wrap space-x-2 gap-2 text-lg font-semibold">
+                @forelse ($tags as $tag)
+                    <x-tag>Tag {{$tag->name}}</x-tag>
+                @empty
+                    <p class="text-xl text-center font-light text-white/25">
+                        No tags
+                    </p>
+                @endforelse
             </div>
         </section>
         <section>
@@ -45,9 +49,13 @@
             </div>
             
             <div class="space-y-3 mt-3">
-                @for ($i = 0; $i < 10; $i++)
-                    <x-job-card.long/>
-                @endfor
+                @forelse ($jobs as $job)
+                    <x-job-card.long :$job />
+                @empty
+                    <p class="text-xl text-center font-light text-white/25">
+                        No jobs
+                    </p>
+                @endforelse
             </div>
        
         </section>
